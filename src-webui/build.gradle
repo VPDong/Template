@@ -1,0 +1,21 @@
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "com.github.node-gradle:gradle-node-plugin:3.1.1"
+    }
+}
+apply plugin: "com.github.node-gradle.node"
+
+// npm run build
+task npmBuild(type: NpmTask, dependsOn: npmInstall) {
+    group = 'build'
+    args = ['run', 'build']
+}
+
+// npm run serve
+task npmServe(type: NpmTask, dependsOn: npmInstall) {
+    group = 'build'
+    args = ['run', 'serve']
+}

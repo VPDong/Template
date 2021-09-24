@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+usrdir=${HOME}
+curdir=$(pwd)
+scpdir=$(cd `dirname $0`;cd ../;pwd)
+
+toname=$1
+tardir=${curdir}/${name}
+cp -rf ${scpdir} ${tardir}
+rm -rf ${tardir}/helper
+
+rm -rf ${tardir}/.idea
+rm -rf ${tardir}/.gradle
+find ${tardir} -name "*.iml" |xargs rm -f
+
+echo "init ${tardir} done"
